@@ -1,0 +1,23 @@
+{% extends "shared/base.html" %} {% load static %}
+<h1>HomePage</h1>
+{% block title %}Posts{% endblock title %} {% block content %} 
+{% include "posts_task/includes/header.html" %} 
+{% for post in all_posts %}
+<!-- <h1>{{post}}</h1> -->
+
+<div>
+  <ul>
+    <li>
+      <a href="{% url 'postsDict' post.title %}">{{post.title}}</a
+      ><img src="{% static post.image %}" alt="" />
+    </li>
+    <br /><br />
+  </ul>
+</div>
+
+<!-- <h2>Title: {{post_data.title}}</h2>
+<h2>Content: {{post_data.content}}</h2>
+<h2>Author: {{post_data.author}}</h2>
+<h2>Likes: {{post_data.likes}}</h2>
+<h2>Tags: {{post_data.tags}}</h2> -->
+{% endfor %} {% endblock content %}
