@@ -1,0 +1,15 @@
+{% extends "shared/base.html" %}
+{% load static %}
+{% include "posts_task/includes/header.html" %}
+    {% block title %}Post Content{% endblock title %}
+</head>
+<body>
+    {% block header%}Post Content{% endblock header%}
+    {% comment %} {% block content %} <img src="{% static post_data.image %}" alt="testImg"><br> Content: {{post_data.content}}<br>Author: {{post_data.author}}{% endblock content %} {% endcomment %}
+    {% block content %} <img src="{{post.image_url}}" alt="testImg"><br>Title: {{post.title}}<br> Content: {{post.content}}<br>Author: <a href="{% url 'authorInfo' post.author.id %}">{{post.author}}</a>
+    <br><div class="commentsSection"><span class="comments">Comments: </span>
+    {% for comments in posts_comment %}
+        <span><br>{{comments.content}}</span>
+    {% endfor %}</div>
+    {% endblock content %}
+</body>
