@@ -1,0 +1,17 @@
+{% extends "shared/base.html" %}
+{% load static %}
+{% include "authors_task/includes/header.html" %}
+    {% block title %}Author Info{% endblock title %}
+</head>
+<body>
+    {% block header%}Author Info{% endblock header%}
+    {% comment %} {% block content %}<br> Content: {{author_data.content}}<br>Author: {{author_data.author}}{% endblock content %} {% endcomment %}
+    {% block content %}Full Name: {{author.first_name}} {{author.last_name}}<br>Phone Number: {{author.phone_number}}<br>Email: {{author.email}}<br>
+    <span>posts created:</span>
+    {% for post in posts_by_author %}
+        <span>{{post.title}}</span>
+    {% if not forloop.last %}, {% endif %}
+    {% endfor %}<br>
+    <span>Total number of posts: {{posts_number.count}}</span>
+    {% endblock content %}
+</body>
